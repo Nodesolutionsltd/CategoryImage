@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NodeSolutions
+ *
+ * NOTICE OF LICENSE
+ * 
+ * @category    NodeSolutions
+ * @package     NodeSolutions_CategoryImage
+ * @license     NodeSolutions
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="category" translate="label" sortOrder="10">
+            <label>NodeSolutions</label>
+        </tab>
+        <section id="module" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>CategoryImage</label>
+            <tab>category</tab>
+            <resource>NodeSolutions_CategoryImage::config_module</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="cat_content" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category Title</label>
+                <depends>
+                    <field id="module/general/enable">1</field>
+                </depends>
+
+                <field id="cat_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Category Title</label>
+                </field>
+
+                <field id="cat_descri" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Category Description</label>
+                    <validate>validate-length maximum-length-100</validate>
+                </field>
+            </group>
+
+            <group id="cat_grid" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category Grid</label>
+                <depends>
+                    <field id="module/general/enable">1</field>
+                </depends>
+
+                <field id="category_grid_count" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <label>Category Grid view count</label>
+                    <source_model>NodeSolutions\CategoryImage\Model\Source\ListMode</source_model>
+                </field>
+
+                <field id="category_grid_view" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <label>Category Grid view</label>
+                    <source_model>NodeSolutions\CategoryImage\Model\Source\View</source_model>
+                </field>
+            </group>
+
+            <group id="cat_img" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category images</label>
+                <depends>
+                    <field id="module/general/enable">1</field>
+                </depends>
+
+                     <field id="img_width" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Category image width</label>
+                    <comment>enter width of category image like 100px.</comment>
+                </field>
+
+                <field id="img_height" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Category image height</label>
+                    <comment>enter height of category image like 100px.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

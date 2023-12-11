@@ -1,0 +1,27 @@
+{
+    "name": "nodesolutions/magento2-categoryimage",
+    "description": "show categories name and image on frontend home page",
+    "require": {
+        "php": "~7.4.0|8.1.0|8.1.1"
+    },
+    "type": "magento2-module",
+    "version": "1.0.1",
+    "license": [
+        "OSL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "NodeSolutions Team",
+            "email": "info@nodesolutions.ca",
+            "homepage": "https://nodesolutions.ca/"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "NodeSolutions\\CategoryImage\\": ""
+        }
+    }
+}

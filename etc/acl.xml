@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NodeSolutions
+ *
+ * NOTICE OF LICENSE
+ * 
+ * @category    NodeSolutions
+ * @package     NodeSolutions_CategoryImage
+ * @license     NodeSolutions
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="NodeSolutions_CategoryImage::config_module" title="NODESOLUTIONS CategoryImage" sortOrder="30">
+                        <resource id="NodeSolutions_CategoryImage::slider" title="CategoryImage" sortOrder="10"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

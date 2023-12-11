@@ -1,0 +1,16 @@
+.product-item-details.category_name {
+    text-align: center;
+}
+
+.node_category_list {
+    align-items: center;
+}
+
+img.node.category_image {
+    max-width: none !important;
+    height: unset !important;
+}
+
+ul.node_solutions.slider {
+    display: flex;
+}

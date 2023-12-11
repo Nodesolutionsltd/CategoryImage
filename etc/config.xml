@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NodeSolutions
+ *
+ * NOTICE OF LICENSE
+ * 
+ * @category    NodeSolutions
+ * @package     NodeSolutions_CategoryImage
+ * @license     NodeSolutions
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <module>
+            <general>
+                <enabled>0</enabled>
+            </general>
+            <cat_grid>
+                <category_grid_count>6</category_grid_count>
+                <category_grid_view>2</category_grid_view>
+            </cat_grid>
+            <cat_img>
+                <img_width>200px</img_width>
+                <img_height>200px</img_height>
+            </cat_img>
+        </module>
+    </default>
+</config>

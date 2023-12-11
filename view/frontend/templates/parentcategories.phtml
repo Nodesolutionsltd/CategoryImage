@@ -1,0 +1,198 @@
+<?php
+$baseUrl = $block->getBasrUrl();
+$categories = $block->getParentCategories();
+
+$moduleStatus = $block->getModuleStatus();
+$categoryGrid = $block->getCategoryGrid();
+$categoryView = $block->getCategoryGridView();
+$categoryImgWidth = $block->getCategoryImgWidth();
+$categoryImgHeight = $block->getCategoryImgHeight();
+
+$categoryTitle = $block->getCategoryTitle();
+$categoryDescription = $block->getCategoryDesc();
+
+?>
+<div class="nodesolutions_content">
+    <div class="category_title" style="text-align:center;">
+        <h2><?php echo $categoryTitle; ?></h2>
+    </div>
+    <div class="category_descri" style="text-align:center;">
+        <p><?php echo $categoryDescription; ?></p>
+    </div>
+</div>
+<div class="block widget block-products-list grid" > 
+    <div class="block-content">
+      <div class="slider-container node_category_list">
+          <ul class="node_solutions slider">
+          <?php if($categoryView != '2'){ ?> 
+            <div class="node_category_list slick-carousel" id="grid"> <?php } ?>
+              <?php foreach($categories as $category): ?>
+                <?php $catIMg = $block->getCategoryImageUrlById($category->getEntityId()); ?>
+                  <li class="product-item" id="grid">
+                    <div class="product-item-info category_descri">
+                      <a href="<?php echo $block->getUrl($category->getRequestPath()); ?>" class="product-item-photo">
+                        <img src="<?php echo $baseUrl . $catIMg; ?>" height="<?php echo $categoryImgHeight; ?>" width="<?php echo $categoryImgWidth; ?>" alt="<?php echo $block->escapeHtml($category->getName()); ?>" class="node category_image"/>
+                
+                        <div class="product-item-details category_name">
+                            <strong class="product-item-name">
+                                <a title="<?php echo $category->getName(); ?>" href="<?php echo $block->getUrl($category->getRequestPath()); ?>" >
+                                <?php echo $category->getName(); ?></a>
+                            </strong>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+              <?php endforeach; ?>
+              <?php if($categoryView != '2'){ ?> </div> <?php } ?>
+          </ul>
+      </div>
+    </div>
+</div>
+<?php 
+ if($categoryGrid == '1'){
+    if($categoryView == '2'){ ?>
+        <script>
+            require(['jquery', 'slick'], function($) {
+                $(document).ready(function() {
+                    $('.slider').slick({
+                        // Slick slider options
+                        slidesToShow: 5,           
+                        slidesToScroll: 1,        
+                        autoplay: true,          
+                        autoplaySpeed: 3000,    
+                        arrows: true,     
+                        //dots: true,    
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
+                    });
+                });
+            });
+</script>
+
+<?php  }
+ }
+?>
+<?php
+if($categoryView == '1'){
+    if($categoryView == '1'){
+        //echo "calllerr";
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?= $this->getViewFileUrl('NodeSolutions_CategoryImage::css/gridcount.css') ?>">
+        <script>
+            var roeCounts = 4;
+            let numberOfRows = 0;
+            let numberOfColumns = roeCounts;
+
+            let grid = document.getElementById('grid');
+            grid.style.setProperty('--grid-rows', numberOfRows);
+            grid.style.setProperty('--grid-cols', numberOfColumns);
+
+            for (let i = 0; i < (numberOfRows * numberOfColumns); i++) {
+              let cell = document.createElement('div');
+              //cell.innerText = (i + 1);
+              grid.appendChild(cell).className = 'category_descri';
+            }
+
+      </script>
+        <?php
+    }
+}
+?>
+<?php  if($categoryGrid != '1'){ ?>
+    <link rel="stylesheet" type="text/css" href="<?= $this->getViewFileUrl('NodeSolutions_CategoryImage::css/gridcount.css') ?>">
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+  const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
+  const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024; // Adjust the breakpoint as needed
+  
+  if (isMobile) {
+    
+    var roeCounts = 2;
+    let numberOfRows = 0;
+    let numberOfColumns = roeCounts;
+
+    let grid = document.getElementById('grid');
+    grid.style.setProperty('--grid-rows', numberOfRows);
+    grid.style.setProperty('--grid-cols', numberOfColumns);
+
+        for (let i = 0; i < (numberOfRows * numberOfColumns); i++) {
+        let cell = document.createElement('div');
+        grid.appendChild(cell).className = 'category_descri';
+        }
+  } else if (isTablet) {
+    var roeCounts = 3;
+    let numberOfRows = 0;
+    let numberOfColumns = roeCounts;
+
+    let grid = document.getElementById('grid');
+    grid.style.setProperty('--grid-rows', numberOfRows);
+    grid.style.setProperty('--grid-cols', numberOfColumns);
+
+        for (let i = 0; i < (numberOfRows * numberOfColumns); i++) {
+        let cell = document.createElement('div');
+        grid.appendChild(cell).className = 'category_descri';
+        }
+  }else{
+    var roeCounts = <?php echo $block->getCategoryGrid(); ?>;
+    let numberOfRows = 0;
+    let numberOfColumns = roeCounts;
+
+    let grid = document.getElementById('grid');
+    grid.style.setProperty('--grid-rows', numberOfRows);
+    grid.style.setProperty('--grid-cols', numberOfColumns);
+
+        for (let i = 0; i < (numberOfRows * numberOfColumns); i++) {
+        let  cell = document.createElement('div');
+        grid.appendChild(cell).className = 'category_descri';
+        }
+  }
+
+});
+
+</script>
+<?php } ?>
+
+<?php if($categoryView == '2'){ ?>
+<script>
+    require(['jquery', 'slick'], function($) {
+        $(document).ready(function() {
+            $('.slider').slick({
+                // Slick slider options
+                slidesToShow: <?php echo $block->getCategoryGrid(); ?>,           
+                slidesToScroll: 1,        
+                autoplay: true,          
+                autoplaySpeed: 3000,    
+                arrows: true,     
+                //dots: true,    
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+    });
+</script>
+<?php } ?>
+

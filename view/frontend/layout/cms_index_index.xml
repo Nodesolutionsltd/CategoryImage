@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NodeSolutions
+ *
+ * NOTICE OF LICENSE
+ * 
+ * @category    NodeSolutions
+ * @package     NodeSolutions_CategoryImage
+ * @license     NodeSolutions
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="NodeSolutions_CategoryImage::css/grid.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.bottom.container">
+            <block class="NodeSolutions\CategoryImage\Block\ParentCategories" name="category_listing" template="NodeSolutions_CategoryImage::parentcategories.phtml" ifconfig="module/general/enable"/>
+        </referenceContainer>
+    </body>
+</page>
